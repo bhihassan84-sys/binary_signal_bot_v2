@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Binary AI Signal Bot V2</title>
+
+<style>
+
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+
+h1{
+    text-align:center;
+}
+
+
+table{
+
+    width:99%;
+    margin:auto;
+    border-collapse:collapse;
+
+}
+
+
+th{
+
+    background:#333;
+    padding:10px;
+
+}
+
+
+td{
+
+    padding:8px;
+    text-align:center;
+    border:1px solid #555;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>🚀 Binary AI Signal Bot V2</h1>
+
+
+<table>
+
+
+<tr>
+
+<th>Pair</th>
+<th>Trend</th>
+<th>BOS</th>
+<th>CHoCH</th>
+<th>FVG</th>
+<th>Order Block</th>
+<th>Liquidity</th>
+<th>Signal</th>
+<th>Prediction</th>
+<th>Confidence</th>
+<th>Open</th>
+<th>High</th>
+<th>Low</th>
+<th>Close</th>
+<th>Entry Quality</th>
+
+</tr>
+
+
+
+{% for pair in market %}
+
+
+<tr>
+
+<td>{{ pair["pair"] }}</td>
+
+<td>{{ pair["trend"] }}</td>
+
+<td>{{ pair["bos"] }}</td>
+
+<td>{{ pair["choch"] }}</td>
+
+<td>{{ pair["fvg"] }}</td>
+
+<td>{{ pair["order_block"] }}</td>
+
+<td>{{ pair["liquidity"] }}</td>
+
+<td>{{ pair["signal"] }}</td>
+
+<td>{{ pair["prediction"] }}</td>
+
+<td>{{ pair["confidence"] }}</td>
+
+<td>{{ pair["open"] }}</td>
+
+<td>{{ pair["high"] }}</td>
+
+<td>{{ pair["low"] }}</td>
+
+<td>{{ pair["close"] }}</td>
+
+<td>{{ pair["entry_quality"] }}</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</table>
+
+<script>
+function refreshAfterCandle() {
+    const now = new Date();
+
+    // Seconds left until next minute
+    const secondsLeft = 60 - now.getSeconds();
+
+    // Add 2 seconds so API has time to update
+    const delay = (secondsLeft + 2) * 1000;
+
+    console.log("Refreshing in", delay / 1000, "seconds");
+
+    setTimeout(function () {
+        location.reload();
+    }, delay);
+}
+
+refreshAfterCandle();
+</script>
+
+</body>
+
+</html>
